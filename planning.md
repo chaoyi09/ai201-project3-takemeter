@@ -116,9 +116,18 @@ makes a general claim about a player, team, or trend — even in emotional langu
 
 ## Data Collection Plan
 
-**Source:** Reddit public posts and comments from r/nba. Collection via manual
-copy-paste from the subreddit web interface (sorted by Hot, New, and Top filters
-to get variety). No private content or authenticated-only content.
+**Source:** Reddit public posts and comments from r/nba, collected via the PullPush.io 
+API (a public Reddit data mirror that does not require authentication). The script 
+paginated backwards from May 2025 across multiple time windows, capturing both 
+submissions and top-level comments during the 2024-25 NBA playoff window — a period 
+with high discourse density. Reddit's own .json endpoints were attempted first but 
+returned 403 errors for unauthenticated requests, which motivated the switch to 
+PullPush. All collected content is public; no authenticated or private content was 
+accessed.
+
+Total raw items collected: 430 (200 submissions + 230 comments)
+Final labeled dataset: 200 examples after review and removal of non-discourse items
+(moderator announcements, news reposts, pure link posts).
 
 **Target distribution:**
 - `analysis`: 70 examples (35%)
